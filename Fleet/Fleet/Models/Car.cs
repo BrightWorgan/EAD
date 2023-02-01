@@ -25,7 +25,6 @@ namespace Fleet.NewFolder
             this.EngineSize = EngineSize;
         }
 
-
         // ToString
         public override string ToString()
         {
