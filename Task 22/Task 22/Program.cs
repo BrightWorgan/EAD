@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 // insert, update, and delete entries
 
 Contact Sarah = new Contact("Sarah H", "(083)383-3555", "House A, Street 2, Town, Co. Wicklow, Ireland");
-Contact Zeus = new Contact("", "(083)555-2323", "House A, Street 2, Town, Co. Wicklow, Ireland");
+Contact Zeus = new Contact("Zeus F.", "(083)555-2323", "House A, Street 2, Town, Co. Wicklow, Ireland");
 Contact Skadi = new Contact("Skadi F.", "(083)555-321", "House A, Street 2, Town, Co. Wicklow, Ireland");
 Contact Buffy = new Contact("Buffy Summers", "(555)338-33555", "1630 Revello Drive, Sunnydale, CA, USA");
 Contact Angel = new Contact("Angel", "(213)555-0162", "1481 Hyperion Ave., LA, CA, USA");
