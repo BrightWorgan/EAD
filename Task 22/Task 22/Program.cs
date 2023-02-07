@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 // insert, update, and delete entries
 
 Contact Sarah = new Contact("Sarah H", "(083)383-3555", "House A, Street 2, Town, Co. Wicklow, Ireland");
-Contact Zeus = new Contact("Zeus F.", "(083)555-2323", "House A, Street 2, Town, Co. Wicklow, Ireland");
+Contact Zeus = new Contact("", "(083)555-2323", "House A, Street 2, Town, Co. Wicklow, Ireland");
 Contact Skadi = new Contact("Skadi F.", "(083)555-321", "House A, Street 2, Town, Co. Wicklow, Ireland");
 Contact Buffy = new Contact("Buffy Summers", "(555)338-33555", "1630 Revello Drive, Sunnydale, CA, USA");
 Contact Angel = new Contact("Angel", "(213)555-0162", "1481 Hyperion Ave., LA, CA, USA");
@@ -57,7 +57,11 @@ context.SaveChanges();
 var AscOrder = from person in context.PhoneBook
               orderby person.PhoneNumber
               select person;
-Console.WriteLine(AscOrder);
+foreach(var contact in  AscOrder)
+{
+    Console.WriteLine(contact);
+}
+//Console.WriteLine(AscOrder);
 
 
 // Report the name and address for specified phone number
@@ -71,15 +75,22 @@ Console.WriteLine(SearchByNum);
 // Report phone numbers and addresses matching a specified name
 //  Searching for a name
 var SearchByName = from person in context.PhoneBook
-                     where person.Name == "Zeus"
+                     where person.PhoneNumber.Contains("Zeus")
                      select person;
-Console.WriteLine(SearchByName);
+foreach(var person in SearchByName)
+{
+    Console.WriteLine(person);
+}
+//Console.WriteLine(SearchByName);
 
 // Searching for an address
 var SearchByAddress = from person in context.PhoneBook
                    where person.Address == "House A, Street 2, Town, Co. Wicklow, Ireland"
                       select person;
-Console.WriteLine(SearchByAddress);
+foreach(var address in SearchByAddress)
+{
+    Console.WriteLine(address);
+}
 
 
 Console.WriteLine("\n\tTask 2 Complete");
