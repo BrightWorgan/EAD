@@ -51,19 +51,33 @@ context.SaveChanges();
 var AscOrder = from c in context.Cars
                orderby c.Registration
                select c;
-Console.WriteLine(AscOrder);
+foreach (Car c in AscOrder)
+{
+    Console.WriteLine(c);
+}
+Console.WriteLine("\n\tTask 1 A Complete");
 
 
 // List the models for all Mazda cars in the fleet
 var Mazdas = from c in context.Cars
     where c.Model == "Mazda"
     select c;
+foreach (Car c in Mazdas)
+{
+    Console.WriteLine(c);
+}
+Console.WriteLine("\n\tTask 1 B Complete");
 
 
 // List all cars in descending engine size order
 var DescOrder = from c in context.Cars
                 orderby c.EngineSize descending
                 select c;
+foreach (Car c in DescOrder)
+{
+    Console.WriteLine(c); 
+}
+Console.WriteLine("\n\tTask 1 C Complete");
 
 
 // List just the make and model for cars whose engine size is 1600 cc
@@ -72,12 +86,13 @@ var MakenModel = from c in context.Cars
                  select c.Make + "//"+ c.Model;
 
 
+
 // Count the number of cars whose engine size is 1600 cc or less
 var CountingSmallCars = (from c in context.Cars
                         where c.EngineSize <= 1600
- 
-                         
                          select c).Count();
+
+
 
 
 Console.WriteLine("\n\tTask 1 Complete");
