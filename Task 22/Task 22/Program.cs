@@ -37,6 +37,8 @@ var addContact = (Contact person) => {
     }
 };
 
+
+// Commented out Adding Contacts while testing tasks
 /*
 addContact(Sarah);
 addContact(Zeus);
@@ -61,7 +63,6 @@ foreach(var contact in  AscOrder)
 {
     Console.WriteLine(contact);
 }
-//Console.WriteLine(AscOrder);
 
 
 // Report the name and address for specified phone number
@@ -75,13 +76,12 @@ Console.WriteLine(SearchByNum);
 // Report phone numbers and addresses matching a specified name
 //  Searching for a name
 var SearchByName = from person in context.PhoneBook
-                     where person.PhoneNumber.Contains("Zeus")
+                     where person.Name.Equals("Zeus")
                      select person;
 foreach(var person in SearchByName)
 {
     Console.WriteLine(person);
 }
-//Console.WriteLine(SearchByName);
 
 // Searching for an address
 var SearchByAddress = from person in context.PhoneBook

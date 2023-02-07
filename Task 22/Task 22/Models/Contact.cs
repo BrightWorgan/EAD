@@ -16,10 +16,10 @@ namespace Task_22.Models
         public string Name { get; set; }
         public string Address { get; set; }
 
-        public Contact(string phoneNumber, string name, string address)
+        public Contact(string name, string phoneNumber,  string address)
         {
-            this.PhoneNumber = phoneNumber;
             this.Name = name;
+            this.PhoneNumber = phoneNumber;
             this.Address = address;
         }
 
