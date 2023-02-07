@@ -33,10 +33,11 @@ var addContact = (Contact person) => {
     }
     else
     {
-        Console.WriteLine(person.PhoneNumber + " That Person's Contact Already Exists...");
+        Console.WriteLine(person.PhoneNumber + " - - - - - That Person's Contact Already Exists...");
     }
 };
 
+/*
 addContact(Sarah);
 addContact(Zeus);
 addContact(Skadi);
@@ -47,9 +48,10 @@ addContact(Doctor);
 addContact(Rose);
 addContact(Zelda);
 addContact(Link);
-
+*/
 
 context.SaveChanges();
+
 
 // Report the full contents of the phone book in name order
 var AscOrder = from person in context.PhoneBook
@@ -57,10 +59,28 @@ var AscOrder = from person in context.PhoneBook
               select person;
 Console.WriteLine(AscOrder);
 
+
 // Report the name and address for specified phone number
-Console.WriteLine("");
-var serachy = Console.ReadLine();
-var SearchContacts = from person in context.PhoneBook
-                     where person.PhoneNumber == serachy;
+var SearchByNum = from person in context.PhoneBook
+                     where person.PhoneNumber == "(077)009-0461"
+                     select person;
+Console.WriteLine(SearchByNum);
+
+
 
 // Report phone numbers and addresses matching a specified name
+//  Searching for a name
+var SearchByName = from person in context.PhoneBook
+                     where person.Name == "Zeus"
+                     select person;
+Console.WriteLine(SearchByName);
+
+// Searching for an address
+var SearchByAddress = from person in context.PhoneBook
+                   where person.Address == "House A, Street 2, Town, Co. Wicklow, Ireland"
+                      select person;
+Console.WriteLine(SearchByAddress);
+
+
+Console.WriteLine("\n\tTask 2 Complete");
+Console.ReadLine();
