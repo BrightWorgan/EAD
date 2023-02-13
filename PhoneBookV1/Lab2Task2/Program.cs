@@ -4,6 +4,8 @@
 using Task_22.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using Microsoft.EntityFrameworkCore.Update.Internal;
 // insert, update, and delete entries
 
 Contact Sarah = new Contact("Sarah H", "(083)383-3555", "House A, Street 2, Town, Co. Wicklow, Ireland");
@@ -38,8 +40,7 @@ var addContact = (Contact person) => {
 };
 
 
-// Commented out Adding Contacts while testing tasks
-/*
+// Adding Contacts
 addContact(Sarah);
 addContact(Zeus);
 addContact(Skadi);
@@ -50,8 +51,44 @@ addContact(Doctor);
 addContact(Rose);
 addContact(Zelda);
 addContact(Link);
-*/
 
+
+var UpdateContact = (String phoneNumber, String address) => {
+    var result = context.PhoneBook.Find(phoneNumber);
+    if (result == null)
+    {
+        Console.WriteLine(phoneNumber + " - - - - - That Person's Contact Does Not Exist...");
+    }
+    else
+    {
+        context.PhoneBook.Update(result);
+        result.Address = address;
+        Console.WriteLine("Contact Updated!");
+    }
+};
+//if person is not there - print error, if person is there change/replace item and save/print change?
+
+
+// Delete a Contact from the PhoneBook
+var DelContact = (Contact person) => {
+    var result = context.PhoneBook.Find(person.PhoneNumber);
+    if (result == null)
+    {
+        Console.WriteLine(person.PhoneNumber + " - - - - - That Person's Contact Does Not Exist...");
+    }
+    else
+    {
+        context.PhoneBook.Remove(person);
+        Console.WriteLine("Contact Removed From Phonebook!");
+    }
+};
+
+
+// Update a Contact
+UpdateContact("(083)383-3555", "My Updated Address");
+
+
+// Saves changes to the database
 context.SaveChanges();
 
 
@@ -91,6 +128,8 @@ foreach(var address in SearchByAddress)
 {
     Console.WriteLine(address);
 }
+
+
 
 
 Console.WriteLine("\n\tTask 2 Complete");
