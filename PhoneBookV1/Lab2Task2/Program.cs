@@ -52,7 +52,7 @@ addContact(Rose);
 addContact(Zelda);
 addContact(Link);
 
-
+/*
 var UpdateContact = (String phoneNumber, String address) => {
     var result = context.PhoneBook.Find(phoneNumber);
     if (result == null)
@@ -61,13 +61,27 @@ var UpdateContact = (String phoneNumber, String address) => {
     }
     else
     {
-        context.PhoneBook.Update(result);
         result.Address = address;
+        context.PhoneBook.Update(result);
         Console.WriteLine("Contact Updated!");
     }
 };
 //if person is not there - print error, if person is there change/replace item and save/print change?
-
+*/
+static void UpdateContact(String phoneNumber, String address, PhoneBookV1Context? context)
+{
+    var result = context.PhoneBook.Find(phoneNumber);
+    if (result == null)
+    {
+        Console.WriteLine(phoneNumber + " - - - - - That Person's Contact Does Not Exist...");
+    }
+    else
+    {
+        result.Address = address;
+        context.PhoneBook.Update(result);
+        Console.WriteLine("Contact Updated!");
+    }
+};
 
 // Delete a Contact from the PhoneBook
 var DelContact = (Contact person) => {
@@ -85,7 +99,7 @@ var DelContact = (Contact person) => {
 
 
 // Update a Contact
-UpdateContact("(083)383-3555", "My Updated Address");
+UpdateContact("(083)383-3555", "My Updated Address", context);
 
 
 // Saves changes to the database
@@ -134,3 +148,5 @@ foreach(var address in SearchByAddress)
 
 Console.WriteLine("\n\tTask 2 Complete");
 Console.ReadLine();
+
+
