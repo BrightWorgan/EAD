@@ -6,10 +6,6 @@ namespace PhoneBookService.Controllers
     [Route("[controller]")]
     public class HealthCheckController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
         private readonly ILogger<HealthCheckController> _logger;
 
@@ -38,14 +34,17 @@ namespace PhoneBookService.Controllers
         [HttpPost(Name = "PostHealthCheck")]
         public void Post()
         {
-            if (IsUp == false)
-            {
-                IsUp = true;
-            }
-            else
-            {
-                IsUp = false;
-            }
+            IsUp = !IsUp;
+            //if (IsUp == false)
+            //{
+            //    IsUp = true;
+            //}
+            //else
+            //{
+            //    IsUp = false;
+            //}
+
+            _logger.LogWarning("This is a log message");
         }
     }
 }
