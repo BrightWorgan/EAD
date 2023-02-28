@@ -1,4 +1,5 @@
-﻿namespace PhoneBookService.Models
+﻿using System.ComponentModel.DataAnnotations;
+namespace PhoneBookService.Models
 {
     public class Contact
     {

@@ -34,7 +34,7 @@ namespace PhoneBookService.Controllers
         [HttpPost(Name = "PostHealthCheck")]
         public void Post()
         {
-            IsUp = !IsUp;
+            // long way
             //if (IsUp == false)
             //{
             //    IsUp = true;
@@ -43,6 +43,9 @@ namespace PhoneBookService.Controllers
             //{
             //    IsUp = false;
             //}
+
+            // shorter way
+            IsUp = !IsUp;
 
             _logger.LogWarning("This is a log message");
         }
