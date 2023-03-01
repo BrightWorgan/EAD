@@ -1,3 +1,8 @@
+using RunningIrelandForum.Models;
+
+// calling class init
+Forum.init();
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
