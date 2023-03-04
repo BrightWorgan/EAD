@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RunningIrelandForum.Models
+namespace RunningForumAPI.Models
 {
     public static class Forum
     {

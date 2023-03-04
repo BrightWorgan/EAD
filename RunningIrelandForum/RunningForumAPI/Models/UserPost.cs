@@ -1,4 +1,4 @@
-﻿namespace RunningIrelandForum.Models
+﻿namespace RunningForumAPI.Models
 {
     public class UserPost
     {
