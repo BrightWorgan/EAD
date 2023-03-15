@@ -13,9 +13,35 @@ namespace LAb4.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        private class AnimeQuote
         {
+            public string? anime { get; set; }
+            public string? character { get; set; }
+            public string? quote { get; set; }
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var res = await client.GetFromJsonAsync<AnimeQuote>("https://animechan.vercel.app/api/random");
+                ViewBag.AnimeQuote = res.quote;
+                ViewBag.AnimeCharacter = res.character;
+                ViewBag.Anime = res.anime;
+            }
             return View();
+        }
+
+        public IActionResult ShowTime()
+        {
+            ViewBag.DateAndTime = "The Current Date and Time is : " + DateTime.Now;
+            return View("ShowTime");
+        }
+
+        [HttpGet]
+        public int DoThing()
+        {
+            return 55;
         }
 
         public IActionResult Privacy()

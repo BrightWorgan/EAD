@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>@ViewBag.DateAndTime</h1>
+<h1 id="clicker"></h1>
+<button onclick="IncrementCount()">Click me please!</button>
+
+<script>
+function IncrementCount() {
+    $.ajax({
+        type: "GET",
+        url: "/Home/DoThing",
+        async: true,
+        success: function (msg) {
+            document.getElementById("clicker").innerHTML = msg;
+            ServiceSucceeded(msg);
+        },
+        error: function () {
+            return "error";
+        }
+    });
+}
+</script>

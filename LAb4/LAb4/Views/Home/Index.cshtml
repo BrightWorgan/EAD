@@ -3,6 +3,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <p>@ViewBag.AnimeCharacter says: "@ViewBag.AnimeQuote"</p>
+    <button onclick="changeMessage()">Change Message</button>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<script>
+    function changeMessage() {
+        const x = document.querySelectorAll('h1')[0];
+        x.innerHTML = 'SEND HELP';
+    }
+</script>
