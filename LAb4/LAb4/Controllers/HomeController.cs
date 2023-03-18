@@ -34,7 +34,7 @@ namespace LAb4.Controllers
 
         public IActionResult ShowTime()
         {
-            ViewBag.DateAndTime = "The Current Date and Time is : " + DateTime.Now;
+            ViewBag.DateAndTime = "The Current Date and Time is : " + DateTime.Now + " \nand your current time zone is: "+ TimeZone.CurrentTimeZone.StandardName;
             return View("ShowTime");
         }
 

@@ -4,12 +4,36 @@
 
 <div class="text-center">
     <p>@ViewBag.AnimeCharacter says: "@ViewBag.AnimeQuote"</p>
+
     <button onclick="changeMessage()">Change Message</button>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>This is a paragraph.</p>
+
+
 </div>
 <script>
-    function changeMessage() {
+    function changeMessage() 
+    {
         const x = document.querySelectorAll('h1')[0];
         x.innerHTML = 'SEND HELP';
+    }
+</script>
+
+<h1 id="clicker"></h1>
+<button onclick="IncrementCount()">Click me please!</button>
+
+<script>
+    function IncrementCount() {
+        $.ajax({
+            type: "GET",
+            url: "/Home/DoThing",
+            async: true,
+            success: function (msg) {
+                document.getElementById("clicker").innerHTML = msg;
+                ServiceSucceeded(msg);
+            },
+            error: function () {
+                return "error";
+            }
+        });
     }
 </script>
