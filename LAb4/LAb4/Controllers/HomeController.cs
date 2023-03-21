@@ -38,6 +38,7 @@ namespace LAb4.Controllers
             return View("ShowTime");
         }
 
+
         [HttpGet]
         public int DoThing()
         {
