@@ -1,6 +1,7 @@
 ﻿using EADExercise3.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EADExercise3.Controllers
 {
@@ -9,14 +10,31 @@ namespace EADExercise3.Controllers
         // GET: TollController/Create
         public ActionResult Calculate()
         {
-            ViewBag.VehicleType = new HeaderEncodingSelector(Vechicle.VehicleType);
-            return;
+            ViewBag.VehicleType = new SelectList(Vechicle.VehicleTypes);
+            return View(new Vechicle { VehicleType="Car", HasETag=false});
         }
-        
+
+        // Post: TollController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Calculate(Vechicle vehCollection)
+        {
+            try
+            {
+                ViewBag.MyResult = vehCollection.Charge;
+                return Calculate();
+            }
+            catch
+            {
+                return View();
+            }
+            
+        }
+
         // GET: TollController
         public ActionResult Index()
         {
-            return View();
+            return Calculate();
         }
 
         // GET: TollController/Details/5
@@ -36,9 +54,10 @@ namespace EADExercise3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
+            Console.WriteLine(collection);
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Calculate");
             }
             catch
             {
