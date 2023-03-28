@@ -1,0 +1,49 @@
+﻿@model EADExercise1AzureCloudService.Models.Instance
+
+@{
+    ViewData["Title"] = "CalculateServiceCost";
+}
+
+<h1>CalculateServiceCost</h1>
+
+<h4>Instance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CalculateServiceCost">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InstanceType" class="control-label"></label>
+                @Html.DropDownList("InstanceSize")
+                <!--<input asp-for="InstanceType" class="form-control" />-->
+                <span asp-validation-for="InstanceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstanceSize" class="control-label"></label>
+                <input asp-for="InstanceSize" class="form-control" />
+                <span asp-validation-for="InstanceSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfInstances" class="control-label"></label>
+                <input asp-for="NumOfInstances" class="form-control" />
+                <span asp-validation-for="NumOfInstances" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnualCost" class="control-label"></label>
+                <input asp-for="AnnualCost" class="form-control" />
+                <span asp-validation-for="AnnualCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
