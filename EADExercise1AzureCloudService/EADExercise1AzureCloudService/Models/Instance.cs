@@ -23,7 +23,7 @@ namespace EADExercise1AzureCloudService.Models
             }
         }
 
-        public String InstanceType { get; set;}
+        public string InstanceType { get; set;}
 
         [Required(ErrorMessage = "*Required Field!*")]
         [DisplayName("Instance Size: ")]

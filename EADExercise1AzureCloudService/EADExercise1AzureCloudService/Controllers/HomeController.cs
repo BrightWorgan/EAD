@@ -14,7 +14,28 @@ namespace EADExercise1AzureCloudService.Controllers
             return View(new Instance() { NumOfInstances = 2 });
         }
 
-      
+        // POST: HomeController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CalculateServiceCost(Instance svc)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Confirm", svc);
+            }
+            else
+            {
+                ViewBag.InstanceSize = new SelectList(Instance.InstanceTypes);
+                return View(new Instance() { NumOfInstances = 2 });
+            }
+        }
+
+        public ActionResult Confirm(Instance svc)
+        {
+            return View(svc);
+        }
+
+
 
 
 
